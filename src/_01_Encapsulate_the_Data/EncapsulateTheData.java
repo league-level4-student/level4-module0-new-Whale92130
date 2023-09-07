@@ -50,4 +50,57 @@ public class EncapsulateTheData {
 
 	private Object memberObj;
 
+	public void setItemsReceived(int randomPositiveNum) {
+		// TODO Auto-generated method stub
+		if (randomPositiveNum < 0) {
+			this.itemsReceived = 0;
+		}
+		else {
+			this.itemsReceived = randomPositiveNum;
+		}
+	}
+
+	public Integer getItemsReceived() {
+		// TODO Auto-generated method stub
+		return itemsReceived;
+	}
+
+	public void setDegreesTurned(double randomPositiveNum) {
+		// TODO Auto-generated method stub
+		if (randomPositiveNum >= 0.0 && randomPositiveNum <= 360.0) {
+			this.degreesTurned = randomPositiveNum;
+		}
+	}
+
+	public Double getDegreesTurned() {
+		// TODO Auto-generated method stub
+		return degreesTurned;
+	}
+
+	public void setNomenclature(String randomString) {
+		// TODO Auto-generated method stub
+		this.nomenclature = randomString;
+		if (nomenclature.equalsIgnoreCase("")) {
+			this.nomenclature = " ";
+		}
+	}
+
+	public Object getNomenclature() {
+		// TODO Auto-generated method stub
+		return nomenclature;
+	}
+
+	public void setMemberObj(Object randomObject) {
+		// TODO Auto-generated method stub
+		this.memberObj = randomObject;
+		if (memberObj instanceof String == true) {
+			this.memberObj = new Object();
+		}
+	}
+
+	public Object getMemberObj() {
+		// TODO Auto-generated method stub
+		return memberObj;
+	}
+
 }
