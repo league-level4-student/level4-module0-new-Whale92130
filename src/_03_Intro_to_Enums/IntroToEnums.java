@@ -71,7 +71,18 @@ public class IntroToEnums {
 		System.out.println(state.convertToFahrenheit(state.getCalsiusTemp()));
 		// 11. Create a switch statement that switches on the variable you created.
 		// Note: When creating the cases, you can omit the "StatesOfMatter."
-
+		switch(state) {
+		case GAS:
+			System.out.println("You gas/boil ramen");
+		
+		case LIQUID:
+			System.out.println("Dr. Pepper is a liquid");
+		
+		case SOLID:
+			System.out.println("Potato Chips are solid");
+		
+		
+		}
 		// 12. For each case, print your favorite food or drink that uses that state.
 		// e.g. Gas/Boiling for Pasta, Solid/Ice for Popsicles, Liquid for Soda
 
