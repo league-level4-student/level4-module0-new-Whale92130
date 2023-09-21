@@ -172,6 +172,7 @@ public class SnakeGame implements ActionListener, KeyListener {
 		if (playAgain == 0) {
 			snake.resetLocation();
 			randomizeFoodLocation();
+			timer.restart();
 		}
 		else {
 			System.exit(0);
@@ -194,6 +195,9 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * gameOver method.
 		 */
 		if (snake.isHeadCollidingWithBody() == true) {
+			gameOver();
+		}
+		if (snake.isOutOfBounds() == true) {
 			gameOver();
 		}
 

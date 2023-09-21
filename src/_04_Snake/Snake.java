@@ -10,6 +10,7 @@ public class Snake {
 	public static final int BODY_SIZE = 50;
 
 	private SnakeSegment head;
+	private SnakeSegment head2;
 	private ArrayList<SnakeSegment> snake;
 
 	private Direction currentDirection;
@@ -65,10 +66,8 @@ public class Snake {
 		 * Use a loop starting at the end of the ArrayList and stop before the head of
 		 * the snake (index 0) or you will go out of bounds.
 		 */
-		for (int i = snake.size()-1; i > 0; i--) {
-			if (i - 1 > 0) {
-				snake.get(i).setLocation(snake.get(i - 1).getLocation());
-			}
+		for (int i = snake.size() - 1; i > 0; i--) {
+			snake.get(i).setLocation(snake.get(i - 1).getLocation());
 		}
 		/*
 		 * Create a new Location object and initialize it with the values calculated in
@@ -136,37 +135,35 @@ public class Snake {
 	}
 
 	public boolean isOutOfBounds() {
-
 		/*
 		 * Complete the method so it returns true if the head of the snake is outside of
 		 * the window and false otherwise.
 		 */
-		if (head.getLocation().getX() > SnakeGame.WINDOW_WIDTH || head.getLocation().getX() < 0) {
+		if (head.getLocation().getX() > SnakeGame.WIDTH-1 || head.getLocation().getX() < 0) {
 			print("out of bounds");
 			return true;
-			
-		}
-		else if (head.getLocation().getY() > SnakeGame.WINDOW_HEIGHT || head.getLocation().getY() < 0) {
+
+		} else if (head.getLocation().getY() > SnakeGame.HEIGHT-1 || head.getLocation().getY() < 0) {
 			print("out of bounds");
 			return true;
-			
+
+		} else {
+			return false;
 		}
-		else {
-		return false;
-	}
 	}
 
 	public boolean isHeadCollidingWithBody() {
-		
+
 		/*
 		 * Complete the method so it returns true if the head is located in the same
 		 * location as any other body segment.
 		 */
 		for (int i = 1; i < snake.size(); i++) {
-			if (head.getLocation().getX() == snake.get(i).getLocation().getX() && head.getLocation().getY() == snake.get(i).getLocation().getY()) {
+			if (head.getLocation().getX() == snake.get(i).getLocation().getX()
+					&& head.getLocation().getY() == snake.get(i).getLocation().getY()) {
 				print("head colliding with body");
 				return true;
-				
+
 			}
 		}
 		return false;
@@ -191,7 +188,11 @@ public class Snake {
 			s.draw(g);
 		}
 	}
+
 	void print(String s) {
+		System.out.println(s);
+	}
+	void print(int s) {
 		System.out.println(s);
 	}
 }
