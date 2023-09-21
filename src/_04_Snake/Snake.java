@@ -46,13 +46,17 @@ public class Snake {
 		 */
 		switch (currentDirection) {
 		case UP:
-			nextX += 1;
-		case DOWN:
-			nextX -= 1;
-		case LEFT:
-			nextY += 1;
-		case RIGHT:
 			nextY -= 1;
+			break;
+		case DOWN:
+			nextY += 1;
+			break;
+		case LEFT:
+			nextX -= 1;
+			break;
+		case RIGHT:
+			nextX += 1;
+			break;
 		}
 		/*
 		 * Change the Location of each SnakeSegment in your snake ArrayList to the
@@ -61,7 +65,7 @@ public class Snake {
 		 * Use a loop starting at the end of the ArrayList and stop before the head of
 		 * the snake (index 0) or you will go out of bounds.
 		 */
-		for (int i = snake.size(); i > 0; i--) {
+		for (int i = snake.size()-1; i > 0; i--) {
 			if (i - 1 > 0) {
 				snake.get(i).setLocation(snake.get(i - 1).getLocation());
 			}
@@ -138,10 +142,14 @@ public class Snake {
 		 * the window and false otherwise.
 		 */
 		if (head.getLocation().getX() > SnakeGame.WINDOW_WIDTH || head.getLocation().getX() < 0) {
+			print("out of bounds");
 			return true;
+			
 		}
 		else if (head.getLocation().getY() > SnakeGame.WINDOW_HEIGHT || head.getLocation().getY() < 0) {
+			print("out of bounds");
 			return true;
+			
 		}
 		else {
 		return false;
@@ -149,14 +157,16 @@ public class Snake {
 	}
 
 	public boolean isHeadCollidingWithBody() {
-
+		
 		/*
 		 * Complete the method so it returns true if the head is located in the same
 		 * location as any other body segment.
 		 */
-		for (int i = 0; i < snake.size(); i++) {
-			if (head.getLocation().equals(snake.get(i).getLocation())) {
+		for (int i = 1; i < snake.size(); i++) {
+			if (head.getLocation().getX() == snake.get(i).getLocation().getX() && head.getLocation().getY() == snake.get(i).getLocation().getY()) {
+				print("head colliding with body");
 				return true;
+				
 			}
 		}
 		return false;
@@ -180,5 +190,8 @@ public class Snake {
 		for (SnakeSegment s : snake) {
 			s.draw(g);
 		}
+	}
+	void print(String s) {
+		System.out.println(s);
 	}
 }

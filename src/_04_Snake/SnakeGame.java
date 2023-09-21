@@ -112,16 +112,22 @@ public class SnakeGame implements ActionListener, KeyListener {
 
 		switch(e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			snake.setDirection(Direction.UP);;
-		
+			snake.setDirection(Direction.UP);
+			System.out.println("UP");
+			break;
 		case KeyEvent.VK_DOWN:
 			snake.setDirection(Direction.DOWN);
+			System.out.println("DOWN");
+			break;
 		case KeyEvent.VK_LEFT:
 			snake.setDirection(Direction.LEFT);
+			System.out.println("LEFT");
+			break;
 		case KeyEvent.VK_RIGHT:
 			snake.setDirection(Direction.RIGHT);
+			System.out.println("RIGHT");
+			break;
 		}
-		
 		/*
 		 * Use a switch statement to determine if an arrow key is pressed, and set the
 		 * snake's direction accordingly.
@@ -143,8 +149,8 @@ public class SnakeGame implements ActionListener, KeyListener {
 			loc  = new Location(ran.nextInt(SnakeGame.WIDTH), (ran.nextInt(SnakeGame.HEIGHT)));
 		}
 		foodLocation = loc;
-
-		/*
+		System.out.println("new food");
+		/*	
 		 * Set the foodLocation equal to the Location object you just created.
 		 * 
 		 * Hint: Use the snake's isLocationOnSnake method to make sure you don't put the
@@ -195,7 +201,7 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * If the location of the snake's head is equal to the location of the food,
 		 * feed the snake and randomize the food location.
 		 */
-		if (snake.getHeadLocation().equals(foodLocation)) {
+		if (snake.getHeadLocation().getX() == foodLocation.getX() && snake.getHeadLocation().getY() == foodLocation.getY()) {
 			snake.feed();
 			randomizeFoodLocation();
 			
